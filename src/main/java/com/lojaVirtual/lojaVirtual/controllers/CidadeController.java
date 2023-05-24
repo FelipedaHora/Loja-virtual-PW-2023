@@ -16,7 +16,6 @@ public class CidadeController implements ControllerCRUD<CidadeDTO> {
     @Autowired
     private CidadeService cidadeService;
 
-
     @Override
     public List<CidadeDTO> buscarTodos() {
         return cidadeService.buscaTodasCidade();
