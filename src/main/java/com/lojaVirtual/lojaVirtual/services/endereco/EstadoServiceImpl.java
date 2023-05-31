@@ -13,6 +13,7 @@ public class EstadoServiceImpl implements EstadoService{
 
     @Autowired
     private EstadoRepository estadoRepository;
+
     @Override
     public List<EstadoDTO> buscaEstados() {
         List<EstadoDTO> estadoDTOs = new ArrayList();

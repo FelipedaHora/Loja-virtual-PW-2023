@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 public class EstadoDTO {
-    private long id;
+    private long id=0;
     private String nome;
     private String sigla;
 
@@ -13,6 +13,7 @@ public class EstadoDTO {
         Estado estado = new Estado();
         estado.setNome(estadoDTO.getNome());
         estado.setSigla(estadoDTO.getSigla());
+        estado.setId(estadoDTO.getId());
         return estado;
     }
 }

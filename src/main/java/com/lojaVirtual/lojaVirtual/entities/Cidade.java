@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
-@Entity(name = "CIDADE")
+@Entity(name = "cidade")
 public class Cidade extends EntidadeBase {
     @Id
     @GeneratedValue

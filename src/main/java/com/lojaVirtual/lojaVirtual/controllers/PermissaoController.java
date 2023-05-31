@@ -2,7 +2,12 @@ package com.lojaVirtual.lojaVirtual.controllers;
 
 import java.util.List;
 
-public class PermissaoController extends ControllerCRUD<Permissao> {
+import org.springframework.web.bind.annotation.RestController;
+
+import com.lojaVirtual.lojaVirtual.entities.Permissao;
+
+@RestController
+public class PermissaoController implements ControllerCRUD<Permissao> {
 
     @Override
     public List<Permissao> buscarTodos() {
@@ -27,5 +32,7 @@ public class PermissaoController extends ControllerCRUD<Permissao> {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'deletar'");
     }
+
+    
     
 }
