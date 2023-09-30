@@ -1,9 +1,7 @@
-package com.aula.backend.entity;
-
+package com.LojaVirtual.LojaVirtual.entity;
 
 import java.util.Date;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,16 +11,19 @@ import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import lombok.Data;
 
+
 @Entity
+@Table(name = "permissao")
 @Data
-@Table(name = "produto")
-public class Produto {
-     
+public class Permissao {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private String descricao;    
-    private Double valor;
-    private Double valorPromocional;    
+        
+    private String nome;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dataCriacao;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dataAtualizacao;
 }
