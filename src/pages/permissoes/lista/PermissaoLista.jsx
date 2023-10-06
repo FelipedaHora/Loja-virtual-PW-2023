@@ -9,8 +9,8 @@ import { ConfirmDialog } from 'primereact/confirmdialog';
 
 const PermissaoLista = () => {
   const navigate = useNavigate();
-  const [Permissoes, setPermissoes] = useState([]);
-  const PermissaoService = new PermissaoService();
+  const [permissoes, setPermissoes] = useState([]);
+  const permissaoService = new PermissaoService();
   const [idExcluir, setIdExcluir] = useState(null);
   const [dialogExcluir, setDialogExcluir] = useState(false);
 
@@ -19,13 +19,13 @@ const PermissaoLista = () => {
   }, []);
 
   const buscarPermissoes = () => {
-    PermissaoService.listar().then(data => {
+    permissaoService.listar().then(data => {
       setPermissoes(data.data);
     });
   }
 
   const abrirFormulario = (rowData) => {
-    navigate("/Permissao-formulario", { state: { PermissaoAlterar: rowData } });
+    navigate("/permissao-formulario", { state: { PermissaoAlterar: rowData } });
   }
 
   const confirmarExclusao = (rowData) => {
@@ -34,7 +34,7 @@ const PermissaoLista = () => {
   }
 
   const excluir = () => {
-    PermissaoService.excluir(idExcluir).then(data => {
+    permissaoService.excluir(idExcluir).then(data => {
       buscarPermissoes();
     });
     setDialogExcluir(false);
@@ -46,7 +46,7 @@ const PermissaoLista = () => {
         <h2 className="page-title">Lista de Permissões</h2>
         <Button className="novo-button" label="Novo Permissao" onClick={() => abrirFormulario(null)} />
       </div>
-      <DataTable value={Permissoes} className="Permissao-datatable">
+      <DataTable value={permissoes} className="Permissao-datatable">
         <Column field="id" header="Id"></Column>
         <Column field="nome" header="Nome"></Column>
         <Column field="sigla" header="Sigla"></Column>

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export class PermissaoService {
-  URL = "http://localhost:8080/estados";
+  URL = "http://localhost:8080/permissoes";
 
   inserir(permissao) {
     return axios.post(this.URL, permissao);

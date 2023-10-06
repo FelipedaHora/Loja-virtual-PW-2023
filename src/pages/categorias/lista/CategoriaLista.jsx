@@ -1,31 +1,31 @@
 import React, { useEffect, useState } from "react";
-import './MarcaLista.css';
+import './CategoriaLista.css'; // Certifique-se de que você tem um arquivo CSS correspondente
 import { useNavigate } from "react-router-dom";
+import { CategoriaService } from "../../../services/CategoriaService";
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { Button } from "primereact/button";
 import { ConfirmDialog } from 'primereact/confirmdialog';
-import { MarcaService } from "../../../services/MarcaService";
 
-const MarcaLista = () => {
+const CategoriaLista = () => {
   const navigate = useNavigate();
-  const [marcas, setMarcas] = useState([]);
-  const marcaService = new MarcaService();
+  const [categorias, setCategorias] = useState([]);
+  const categoriasService = new CategoriaService();
   const [idExcluir, setIdExcluir] = useState(null);
   const [dialogExcluir, setDialogExcluir] = useState(false);
 
   useEffect(() => {
-    buscarMarcas();
+    buscarCategorias();
   }, []);
 
-  const buscarMarcas = () => {
-    marcaService.listar().then(data => {
-      setMarcas(data.data);
+  const buscarCategorias = () => {
+    categoriasService.listar().then(data => {
+      setCategorias(data.data);
     });
   }
 
   const abrirFormulario = (rowData) => {
-    navigate("/marca-formulario", { state: { MarcaAlterar: rowData } });
+    navigate("/categorias-formulario", { state: { categoriasAlterar: rowData } });
   }
 
   const confirmarExclusao = (rowData) => {
@@ -34,19 +34,19 @@ const MarcaLista = () => {
   }
 
   const excluir = () => {
-    marcaService.excluir(idExcluir).then(data => {
-      buscarMarcas();
+    categoriasService.excluir(idExcluir).then(data => {
+      buscarCategorias();
     });
     setDialogExcluir(false);
   }
 
   return (
-    <div className="Marca-lista-container">
+    <div className="categorias-lista-container">
       <div className="header">
-        <h2 className="page-title">Lista de Marcas</h2>
-        <Button className="novo-button" label="Novo Marca" onClick={() => abrirFormulario(null)} />
+        <h2 className="page-title">Lista de Categorias</h2>
+        <Button className="novo-button" label="Novo Categoria" onClick={() => abrirFormulario(null)} />
       </div>
-      <DataTable value={marcas} className="Marca-datatable">
+      <DataTable value={categorias} className="categorias-datatable">
         <Column field="id" header="Id"></Column>
         <Column field="nome" header="Nome"></Column>
         <Column field="sigla" header="Sigla"></Column>
@@ -64,4 +64,4 @@ const MarcaLista = () => {
   );
 }
 
-export default MarcaLista;
+export default CategoriaLista;

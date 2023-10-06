@@ -9,8 +9,8 @@ const PermissaoFormulario = (props) => {
   const location = useLocation();
   const { PermissaoAlterar } = location.state || {};
 
-  const [Permissao, setPermissao] = useState(PermissaoNovo);
-  const PermissaoService = new PermissaoService();
+  const [permissao, setPermissao] = useState(PermissaoNovo);
+  const permissaoService = new PermissaoService();
 
   useEffect(() => {
     if (PermissaoAlterar) {
@@ -21,21 +21,21 @@ const PermissaoFormulario = (props) => {
   }, []);
 
   const listaPermissaos = () => {
-    navigate("/Permissoes")
+    navigate("/permissoes")
   }
 
   const alterarValor = (event) => {
-    setPermissao({ ...Permissao, [event.target.name]: event.target.value });
+    setPermissao({ ...permissao, [event.target.name]: event.target.value });
   }
 
   const salvar = () => {
-    if (Permissao.id) {
-      PermissaoService.alterar(Permissao).then(data => {
+    if (permissao.id) {
+      permissaoService.alterar(permissao).then(data => {
         console.log(data);
         setPermissao(PermissaoNovo);
       });
     } else {
-      PermissaoService.inserir(Permissao).then(data => {
+      permissaoService.inserir(permissao).then(data => {
         console.log(data);
         setPermissao(PermissaoNovo);
       });
@@ -45,8 +45,8 @@ const PermissaoFormulario = (props) => {
   return (
     <div className="container">
       <h2 className="page-title">Inserir ou Alterar uma Permissão</h2>
-      <input type="text" name="nome" className="input-field" value={Permissao.nome} onChange={alterarValor} /><br /><br />
-      <input type="text" name="sigla" className="input-field" value={Permissao.sigla} onChange={alterarValor} /><br /><br />
+      <input type="text" name="nome" className="input-field" value={permissao.nome} onChange={alterarValor} /><br /><br />
+      <input type="text" name="sigla" className="input-field" value={permissao.sigla} onChange={alterarValor} /><br /><br />
       <button className="save-button" onClick={salvar}>Salvar</button>
       <button className="list-button" onClick={listaPermissaos}>Lista Permissaos</button>
     </div>

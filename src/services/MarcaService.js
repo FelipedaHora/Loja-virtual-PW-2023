@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export class MarcaService {
-  URL = "http://localhost:8080/estados";
+  URL = "http://localhost:8080/marcas";
 
   inserir(marca) {
     return axios.post(this.URL, marca);
