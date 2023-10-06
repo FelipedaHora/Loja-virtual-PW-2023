@@ -23,24 +23,24 @@ import jakarta.validation.Valid;
 import jakarta.websocket.server.PathParam;
 
 @RestController
-@RequestMapping("/api/categoria")
+@RequestMapping("/categorias")
 @CrossOrigin
 public class CategoriaController {
 
     @Autowired
     private CategoriaService categoriaService;
 
-    @GetMapping("/")
+    @GetMapping
     public List<Categoria> buscarTodos() {
         return categoriaService.buscarTodos();
     }
 
-    @PostMapping("/")
+    @PostMapping
     public Categoria inserir(@Valid@RequestBody Categoria objeto) {
         return categoriaService.inserir(objeto);
     }
 
-    @PutMapping("/")
+    @PutMapping
     public Categoria alterar(@RequestBody Categoria objeto) {
         return categoriaService.alterar(objeto);
     }

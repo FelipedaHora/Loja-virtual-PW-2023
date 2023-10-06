@@ -23,24 +23,24 @@ import jakarta.validation.Valid;
 import jakarta.websocket.server.PathParam;
 
 @RestController
-@RequestMapping("/api/marca")
+@RequestMapping("/marcas")
 @CrossOrigin
 public class MarcaController {
 
     @Autowired
     private MarcaService marcaService;
 
-    @GetMapping("/")
+    @GetMapping
     public List<Marca> buscarTodos() {
         return marcaService.buscarTodos();
     }
 
-    @PostMapping("/")
+    @PostMapping
     public Marca inserir(@Valid@RequestBody Marca objeto) {
         return marcaService.inserir(objeto);
     }
 
-    @PutMapping("/")
+    @PutMapping
     public Marca alterar(@RequestBody Marca objeto) {
         return marcaService.alterar(objeto);
     }

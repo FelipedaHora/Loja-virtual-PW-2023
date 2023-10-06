@@ -24,21 +24,21 @@ import com.LojaVirtual.LojaVirtual.service.PermissaoService;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/api/permissao")
+@RequestMapping("/permissoes")
 @CrossOrigin
 public class PermissaoController {
 
     @Autowired
     private PermissaoService permissaoService;
-    @GetMapping("/")
+    @GetMapping
     public List<Permissao> buscarTodos(){
         return permissaoService.buscarTodos();
     }
-    @PostMapping("/")
+    @PostMapping
     public Permissao inserir(@Valid@RequestBody Permissao objeto){
         return permissaoService.inserir(objeto);
     }
-    @PutMapping("/")
+    @PutMapping
     public Permissao alterar(@RequestBody Permissao objeto){
         return permissaoService.alterar(objeto);
     }
