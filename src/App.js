@@ -30,12 +30,16 @@ function App() {
 						<Route exact path='/' Component={() => <Home />} />
 						<Route path='/produtos' Component={ProdutoLista} />
 						<Route path='/produto-formulario' Component={ProdutoFormulario} />
+
 						<Route path='/estados' Component={EstadoLista} />
 						<Route path='/estado-formulario' Component={EstadoFormulario} />
+
 						<Route path='/permissoes' Component={PermissaoLista} />
 						<Route path='/permissao-formulario' Component={PermissaoFormulario} />
+
 						<Route path='/marcas' Component={MarcaLista} />
 						<Route path='/marca-formulario' Component={MarcaFormulario} />
+		
 						<Route path='/categorias' Component={CategoriaLista} />
 						<Route path='/categoria-formulario' Component={CategoriaFormulario} />
 					</Routes>

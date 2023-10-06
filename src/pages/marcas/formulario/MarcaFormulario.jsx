@@ -5,7 +5,7 @@ import { MarcaService } from "../../../services/MarcaService";
 
 const MarcaFormulario = (props) => {
   const navigate = useNavigate();
-  const marcaNovo = { nome: '', sigla: '' };
+  const marcaNovo = { nome: ''};
   const location = useLocation();
   const { MarcaAlterar } = location.state || {};
 

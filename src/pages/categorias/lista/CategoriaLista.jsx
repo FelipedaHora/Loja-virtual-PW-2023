@@ -59,7 +59,6 @@ const CategoriaLista = () => {
       >
         <Column field="id" header="Id"></Column>
         <Column field="nome" header="Nome"></Column>
-        <Column field="sigla" header="Sigla"></Column>
         <Column header="Ações" body={(rowData) => (
           <div className="options">
             <Button label="Editar" className="editar-button" onClick={() => abrirFormulario(rowData)} />

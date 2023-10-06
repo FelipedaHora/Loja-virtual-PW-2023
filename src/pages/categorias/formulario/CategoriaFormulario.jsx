@@ -5,7 +5,7 @@ import { CategoriaService } from "../../../services/CategoriaService";
 
 const CategoriaFormulario = (props) => {
   const navigate = useNavigate();
-  const categoriaNovo = { nome: '', sigla: '' };
+  const categoriaNovo = { nome: ''};
   const location = useLocation();
   const { categoriaAlterar } = location.state || {};
 
