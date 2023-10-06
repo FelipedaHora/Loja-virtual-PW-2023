@@ -1,13 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useLocation, useParams } from 'react-router-dom';
-import './EstadoFormulario.css';
+import { useNavigate, useLocation } from 'react-router-dom';
+import './EstadoFormulario.css'; // Certifique-se de que você tem um arquivo CSS correspondente
 import { EstadoService } from "../../../services/EstadoService";
 
 const EstadoFormulario = (props) => {
-    //const navigate = useNavigate();
-    //const location = useLocation();
-    ///const { id } = location.state || {};
-    //const { ii } = useParams();
     const navigate = useNavigate();
     const estadoNovo = { nome: '', sigla: '' };
     const location = useLocation();
@@ -47,12 +43,12 @@ const EstadoFormulario = (props) => {
     }
 
     return (
-        <div style={{ padding: '10px' }}>
-            <h2>Inserir ou Alterar um Estado</h2>
-            <input type="text" name="nome" value={estado.nome} onChange={alterarValor} /><br /><br />
-            <input type="text" name="sigla" value={estado.sigla} onChange={alterarValor} /><br /><br />
-            <button onClick={salvar}>Salvar</button>
-            <button onClick={listaEstados}>Lista Estados</button>
+        <div className="container">
+            <h2 className="page-title">Inserir ou Alterar um Estado</h2>
+            <input type="text" name="nome" className="input-field" value={estado.nome} onChange={alterarValor} /><br /><br />
+            <input type="text" name="sigla" className="input-field" value={estado.sigla} onChange={alterarValor} /><br /><br />
+            <button className="save-button" onClick={salvar}>Salvar</button>
+            <button className="list-button" onClick={listaEstados}>Lista Estados</button>
         </div>
     );
 }

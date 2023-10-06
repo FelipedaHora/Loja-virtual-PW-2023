@@ -1,0 +1,23 @@
+/* Define as cores personalizadas */
+.page-title {
+  color: darkgreen;
+}
+
+.novo-button {
+  background-color: darkgreen;
+  color: white;
+}
+
+.alterar-button {
+  background-color: yellow;
+  /* Cor personalizada para o botão "Alterar" */
+  color: black;
+}
+
+.excluir-button {
+  background-color: red;
+  /* Cor personalizada para o botão "Excluir" */
+  color: white;
+}
+
+/* Adicione outras classes e estilos conforme necessário */
