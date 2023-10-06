@@ -1,29 +1,105 @@
+/* Estilos para o menu */
 .menu {
+	display: flex;
+	justify-content: space-between;
+	/* Para alinhar o logotipo e os itens do menu */
+	align-items: center;
+	/* Para centralizar verticalmente o logotipo e os itens do menu */
 	padding: 10px;
+	background-color: darkgreen;
+	/* Cor de fundo do menu */
+	color: white;
+	/* Cor do texto do menu */
 }
 
+/* Estilos para o logotipo */
+.logo h1 {
+	font-size: 24px;
+	margin: 0;
+}
+
+/* Estilos para a lista de itens do menu */
 ul {
 	list-style: none;
 	padding: 0;
 	display: flex;
 	justify-content: flex-start;
-}
-
-ul li:last-child{
-	width: 100%;
-	text-align: end;
+	align-items: center;
 }
 
 li {
 	margin-right: 20px;
 	cursor: pointer;
+	font-weight: bold;
+	/* Estilo de fonte em negrito para os itens do menu */
+	text-transform: uppercase;
+	/* Transforma o texto em maiúsculas */
 }
 
-li:hover {
-	text-decoration: underline;
+/* Estilos para o último item (Modo Escuro) */
+li:last-child {
+	margin-right: 0;
+	text-align: end;
+	display: flex;
+	align-items: center;
 }
 
-.mudarTema{
+/* Estilos para o botão de alternância de tema */
+.switch {
+	position: relative;
+	display: inline-block;
+	width: 50px;
+	height: 24px;
+	margin-left: 10px;
+}
 
-	justify-content: right;
+.switch input {
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+.slider {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #ccc;
+	/* Cor de fundo da alça */
+	-webkit-transition: 0.4s;
+	transition: 0.4s;
+	border-radius: 34px;
+	/* Forma arredondada da alça */
+}
+
+.slider:before {
+	position: absolute;
+	content: "";
+	height: 20px;
+	width: 20px;
+	left: 2px;
+	bottom: 2px;
+	background-color: white;
+	/* Cor da alça */
+	-webkit-transition: 0.4s;
+	transition: 0.4s;
+	border-radius: 50%;
+	/* Forma arredondada da alça */
+}
+
+input:checked+.slider {
+	background-color: darkgreen;
+	/* Cor de fundo da alça quando ativada */
+}
+
+input:focus+.slider {
+	box-shadow: 0 0 1px darkgreen;
+	/* Sombra quando o botão de alternância de tema está focado */
+}
+
+input:checked+.slider:before {
+	transform: translateX(26px);
+	/* Posição da alça quando ativada */
 }

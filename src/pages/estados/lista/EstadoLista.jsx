@@ -21,42 +21,41 @@ const EstadoLista = () => {
     const buscarEstados = () => {
         estadoService.listar().then(data => {
             setEstados(data.data);
-        })
+        });
     }
 
-    const formulario = () => {
-        navigate("/estado-formulario");
+    const abrirFormulario = (rowData) => {
+        navigate("/estado-formulario", { state: { estadoAlterar: rowData } });
     }
 
-    const alterar = (rowData) => {
-        navigate("/estado-formulario", { state: { estadoAlterar: rowData } })
+    const confirmarExclusao = (rowData) => {
+        setIdExcluir(rowData.id);
+        setDialogExcluir(true);
     }
 
     const excluir = () => {
         estadoService.excluir(idExcluir).then(data => {
             buscarEstados();
         });
-    }
-
-    const optionColumn = (rowData) => {
-        return (
-            <div className="options">
-                <Button label="Alterar" className="alterar-button" onClick={() => alterar(rowData)} />
-                <Button label="Excluir" className="excluir-button" onClick={() => { setIdExcluir(rowData.id); setDialogExcluir(true) }} />
-            </div>
-        )
+        setDialogExcluir(false);
     }
 
     return (
-        <div className="container">
-            <h2 className="page-title">Lista de Estados</h2>
-            <button className="novo-button" onClick={formulario}>Novo Estado</button>
-            <br /><br />
-            <DataTable value={estados} tableStyle={{ minWidth: '50rem' }}>
+        <div className="estado-lista-container">
+            <div className="header">
+                <h2 className="page-title">Lista de Estados</h2>
+                <Button className="novo-button" label="Novo Estado" onClick={() => abrirFormulario(null)} />
+            </div>
+            <DataTable value={estados} className="estado-datatable">
                 <Column field="id" header="Id"></Column>
                 <Column field="nome" header="Nome"></Column>
                 <Column field="sigla" header="Sigla"></Column>
-                <Column header="Opções" body={optionColumn}></Column>
+                <Column header="Ações" body={(rowData) => (
+                    <div className="options">
+                        <Button label="Editar" className="editar-button" onClick={() => abrirFormulario(rowData)} />
+                        <Button label="Excluir" className="excluir-button" onClick={() => confirmarExclusao(rowData)} />
+                    </div>
+                )}></Column>
             </DataTable>
 
             <ConfirmDialog visible={dialogExcluir} onHide={() => setDialogExcluir(false)} message="Deseja excluir?"
