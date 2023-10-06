@@ -1,0 +1,21 @@
+/* Define as cores personalizadas */
+.page-title {
+  color: darkgreen;
+}
+
+.input-field {
+  background-color: lightgreen;
+  /* Cor de fundo para os campos de entrada */
+}
+
+.save-button {
+  background-color: darkgreen;
+  color: white;
+}
+
+.list-button {
+  background-color: darkgreen;
+  color: white;
+}
+
+/* Adicione outras classes e estilos conforme necessário */
