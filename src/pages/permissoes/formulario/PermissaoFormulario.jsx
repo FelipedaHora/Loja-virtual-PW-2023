@@ -5,7 +5,7 @@ import { PermissaoService } from "../../../services/PermissaoService";
 
 const PermissaoFormulario = (props) => {
   const navigate = useNavigate();
-  const PermissaoNovo = { nome: ''};
+  const PermissaoNovo = { nome: '' };
   const location = useLocation();
   const { PermissaoAlterar } = location.state || {};
 
@@ -21,7 +21,7 @@ const PermissaoFormulario = (props) => {
   }, []);
 
   const listaPermissaos = () => {
-    navigate("/permissoes")
+    navigate("/permissoes");
   }
 
   const alterarValor = (event) => {
@@ -29,6 +29,12 @@ const PermissaoFormulario = (props) => {
   }
 
   const salvar = () => {
+    // Verifica se o campo 'nome' está vazio
+    if (!permissao.nome) {
+      alert('O campo nome não pode estar vazio');
+      return; // Impede a execução do salvamento
+    }
+
     if (permissao.id) {
       permissaoService.alterar(permissao).then(data => {
         console.log(data);
@@ -45,8 +51,8 @@ const PermissaoFormulario = (props) => {
   return (
     <div className="container">
       <h2 className="page-title">Inserir ou Alterar uma Permissão</h2>
-      <input type="text" name="nome" className="input-field" value={permissao.nome} onChange={alterarValor} /><br /><br />
-      <input type="text" name="sigla" className="input-field" value={permissao.sigla} onChange={alterarValor} /><br /><br />
+      <label htmlFor="nome" style={{ fontWeight: 'bold', color: 'black' }}>Nome:</label>
+      <input type="text" name="nome" id="nome" className="input-field" value={permissao.nome} onChange={alterarValor} /><br /><br />
       <button className="save-button" onClick={salvar}>Salvar</button>
       <button className="list-button" onClick={listaPermissaos}>Lista Permissaos</button>
     </div>

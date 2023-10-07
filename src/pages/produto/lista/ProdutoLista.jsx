@@ -56,7 +56,7 @@ const ProdutoLista = () => {
 	}
 
 	return (
-		<div className="container">
+		<div>
 			<h2>Lista de Produtos</h2>
 			<button onClick={formulario}>Novo Produto</button>
 			<br /><br />

@@ -6,7 +6,7 @@ const Rodape = () => {
 	const {dark} = useContext(TemaContexto);
   return (
     <div className={`rodape ${dark?'dark':'light'}`}>
-      <p>&copy; 2023 CRUD React, Spring e Websocket</p>
+      <p>&copy; 2023, Todos os direitos são reservados - Music Store </p>
     </div>
   );
 };

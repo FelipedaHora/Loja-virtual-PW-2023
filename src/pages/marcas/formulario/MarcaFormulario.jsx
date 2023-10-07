@@ -5,7 +5,7 @@ import { MarcaService } from "../../../services/MarcaService";
 
 const MarcaFormulario = (props) => {
   const navigate = useNavigate();
-  const marcaNovo = { nome: ''};
+  const marcaNovo = { nome: '' };
   const location = useLocation();
   const { MarcaAlterar } = location.state || {};
 
@@ -21,7 +21,7 @@ const MarcaFormulario = (props) => {
   }, []);
 
   const listaMarcas = () => {
-    navigate("/Marcas")
+    navigate("/Marcas");
   }
 
   const alterarValor = (event) => {
@@ -29,6 +29,12 @@ const MarcaFormulario = (props) => {
   }
 
   const salvar = () => {
+    // Verifica se o campo 'nome' está vazio
+    if (!marca.nome) {
+      alert('O campo nome não pode estar vazio');
+      return; // Impede a execução do salvamento
+    }
+
     if (marca.id) {
       marcaService.alterar(marca).then(data => {
         console.log(data);
@@ -44,9 +50,9 @@ const MarcaFormulario = (props) => {
 
   return (
     <div className="container">
-      <h2 className="page-title">Inserir ou Alterar um Marca</h2>
-      <input type="text" name="nome" className="input-field" value={marca.nome} onChange={alterarValor} /><br /><br />
-      <input type="text" name="sigla" className="input-field" value={marca.sigla} onChange={alterarValor} /><br /><br />
+      <h2 className="page-title">Inserir ou Alterar uma Marca</h2>
+      <label htmlFor="nome" style={{ fontWeight: 'bold', color: 'black' }}>Nome:</label>
+      <input type="text" name="nome" id="nome" className="input-field" value={marca.nome} onChange={alterarValor} /><br /><br />
       <button className="save-button" onClick={salvar}>Salvar</button>
       <button className="list-button" onClick={listaMarcas}>Lista Marcas</button>
     </div>

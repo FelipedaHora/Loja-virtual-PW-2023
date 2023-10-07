@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from 'react-router-dom';
-import './CategoriaFormulario.css'; // Certifique-se de que você tem um arquivo CSS correspondente
+import './CategoriaFormulario.css';
 import { CategoriaService } from "../../../services/CategoriaService";
 
 const CategoriaFormulario = (props) => {
   const navigate = useNavigate();
-  const categoriaNovo = { nome: ''};
+  const categoriaNovo = { nome: '' };
   const location = useLocation();
   const { categoriaAlterar } = location.state || {};
 
@@ -21,7 +21,7 @@ const CategoriaFormulario = (props) => {
   }, []);
 
   const listaCategorias = () => {
-    navigate("/categorias")
+    navigate("/categorias");
   }
 
   const alterarValor = (event) => {
@@ -29,6 +29,12 @@ const CategoriaFormulario = (props) => {
   }
 
   const salvar = () => {
+    // Verifica se o campo 'nome' está vazio
+    if (!categoria.nome) {
+      alert('O campo nome não pode estar vazio');
+      return; // Impede a execução do salvamento
+    }
+
     if (categoria.id) {
       categoriaService.alterar(categoria).then(data => {
         console.log(data);
@@ -44,9 +50,9 @@ const CategoriaFormulario = (props) => {
 
   return (
     <div className="container">
-      <h2 className="page-title">Inserir ou Alterar um Categoria</h2>
-      <input type="text" name="nome" className="input-field" value={categoria.nome} onChange={alterarValor} /><br /><br />
-      <input type="text" name="sigla" className="input-field" value={categoria.sigla} onChange={alterarValor} /><br /><br />
+      <h2 className="page-title">Inserir ou Alterar uma Categoria</h2>
+      <label htmlFor="nome" style={{ fontWeight: 'bold', color: 'black' }}>Nome:</label>
+      <input type="text" name="nome" id="nome" className="input-field" value={categoria.nome} onChange={alterarValor} /><br /><br />
       <button className="save-button" onClick={salvar}>Salvar</button>
       <button className="list-button" onClick={listaCategorias}>Lista Categorias</button>
     </div>
